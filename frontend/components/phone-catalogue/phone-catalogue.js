@@ -1,6 +1,6 @@
 'use strict';
 
-import template from './template.html';
+import compiledTemplate from './template.hbs';
 
 export default class PhoneCatalogue {
 	constructor(options) {
@@ -11,9 +11,8 @@ export default class PhoneCatalogue {
 	}
 
 	_render() {
-		this._compiledTemplate = _.template(template);
 
-		this._el.innerHTML = this._compiledTemplate({
+		this._el.innerHTML = compiledTemplate({
 			phones: this._phones,
 		});
 	}
