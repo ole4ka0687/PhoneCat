@@ -7,5 +7,16 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
   },
 
+  module: {
+    rules: [
+      { 
+      	test: /\.html/,
+        loader: 'raw-loader'
+      }
+    ]
+  },
+  mode: 'development',
+
   watch: true,
+  devtool: 'source-map',
 };

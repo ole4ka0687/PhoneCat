@@ -51,24 +51,5 @@
 
   <footer></footer>
 
-  <script type="text/template" id="phone-catalogue-template">
-    <ul class="phones">
-
-      <% phones.forEach((phone) => { %>
-
-        <li class="thumbnail">
-          <a href="#!/phones/<%= phone.id %>" class="thumb">
-            <img alt="<%- phone.name %>" src="<%= phone.imageUrl %>">
-          </a>
-          <a href="#!/phones/<%= phone.id %>"><%- phone.name %></a>
-          <p><%- phone.snippet %></p>
-        </li>
-
-      <% }); %>
-    </ul>
-  </script>
-
-
-
 </body>
 </html>
