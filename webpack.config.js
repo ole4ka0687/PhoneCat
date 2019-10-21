@@ -1,4 +1,5 @@
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './frontend/app.js',
@@ -6,7 +7,7 @@ module.exports = {
     filename: 'index.js',
     path: path.resolve(__dirname, 'public'),
   },
-
+  
   module: {
     rules: [
       { 
@@ -27,9 +28,22 @@ module.exports = {
 	        plugins: ['@babel/plugin-transform-runtime']
 	      }
 	    }
-	  }
+	  },
+	  {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ]
   },
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
+  },
+
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    compress: true,
+  },
+  
   mode: 'development',
 
   watch: true,

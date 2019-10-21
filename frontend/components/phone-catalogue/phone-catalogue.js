@@ -1,5 +1,6 @@
 'use strict';
 
+import './style.css';
 import compiledTemplate from './template.hbs';
 
 export default class PhoneCatalogue {
