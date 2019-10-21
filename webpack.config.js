@@ -16,7 +16,18 @@ module.exports = {
       { 
       	test: /\.hbs$/, 
       	loader: "handlebars-loader" 
-      }
+      },
+      {
+	    test: /\.m?js$/,
+	    exclude: /node_modules/,
+	    use: {
+	      loader: 'babel-loader',
+	      options: {
+	        presets: ['@babel/preset-env'],
+	        plugins: ['@babel/plugin-transform-runtime']
+	      }
+	    }
+	  }
     ]
   },
   mode: 'development',
