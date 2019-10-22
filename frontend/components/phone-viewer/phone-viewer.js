@@ -12,6 +12,10 @@ export default class PhoneViewer {
 		this._render();
 	}
 
+	show() {
+		this._el.classList.remove('js-hidden');
+	}
+
 	_render() {
 
 		this._el.innerHTML = compiledTemplate({
