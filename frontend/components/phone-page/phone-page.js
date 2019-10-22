@@ -16,7 +16,13 @@ export default class PhonePage {
         });
 
         this._catalogue._el.addEventListener('phoneSelected', this._onPhoneSelected.bind(this));
+        this._viewer._el.addEventListener('back', this._onPhoneViewerBack.bind(this));
 	}
+
+    _onPhoneViewerBack(event) {
+        this._viewer.hide();
+        this._catalogue.show();
+    }
 
     _onPhoneSelected(event) {
         let phoneId = event.detail;
