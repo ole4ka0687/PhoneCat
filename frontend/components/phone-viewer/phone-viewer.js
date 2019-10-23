@@ -7,8 +7,8 @@ export default class PhoneViewer extends Component {
 	constructor(options) {
 		super(options.el);
 
-		this._el.addEventListener('click', this._onBackButtonClick.bind(this));
-		this._el.addEventListener('click', this._onAddButtonClick.bind(this));
+		this.on('click', this._onBackButtonClick.bind(this));
+		this.on('click', this._onAddButtonClick.bind(this));
 	}
 
 	setPhone(phone) {
@@ -29,7 +29,7 @@ export default class PhoneViewer extends Component {
 			return;
 		}
 
-		this._el.dispatchEvent(new CustomEvent('back'));
+		this.trigger('back');
 	}
 
 	_onAddButtonClick(event) {
@@ -38,6 +38,6 @@ export default class PhoneViewer extends Component {
 			return;
 		}
 
-		this._el.dispatchEvent(new CustomEvent('addd'));
+		this.trigger('add', this._phone.id);
 	}
 }

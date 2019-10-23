@@ -11,7 +11,8 @@ export default class PhoneCatalogue extends Component {
 		this._phones = options.phones;
 
 		this._render();
-		this._el.addEventListener('click', this._onPhoneClick.bind(this));
+
+		this.on('click', this._onPhoneClick.bind(this));
 	}
 
 	_render() {
@@ -28,14 +29,6 @@ export default class PhoneCatalogue extends Component {
 			return;
 		}
 
-		let customEvent = new CustomEvent('phoneSelected', {
-			detail: phoneElement.dataset.phoneId
-		});
-
-		this._el.dispatchEvent(customEvent);
-
-
-
-		console.log(phoneElement.dataset.phoneId);
+		this.trigger('phoneSelected', phoneElement.dataset.phoneId);
 	}
 }
