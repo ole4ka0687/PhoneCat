@@ -105,6 +105,73 @@ new _components_phone_page_phone_page__WEBPACK_IMPORTED_MODULE_0__["default"]({
 
 /***/ }),
 
+/***/ "./frontend/components/component.js":
+/*!******************************************!*\
+  !*** ./frontend/components/component.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Component; });
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+
+
+var Component =
+/*#__PURE__*/
+function () {
+  function Component(element) {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Component);
+
+    this._el = element;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Component, [{
+    key: "show",
+    value: function show() {
+      this._el.classList.remove('js-hidden');
+    }
+  }, {
+    key: "hide",
+    value: function hide() {
+      this._el.classList.add('js-hidden');
+    }
+  }, {
+    key: "on",
+    value: function on(eventName, callback) {
+      this._el.addEventListener(eventName, callback);
+    }
+  }, {
+    key: "off",
+    value: function off(eventName, callback) {
+      this._el.removeEventListener(eventName, callback);
+    }
+  }, {
+    key: "trigger",
+    value: function trigger(eventName) {
+      var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var customEvent = new CustomEvent(eventName, {
+        detail: data
+      });
+
+      this._el.dispatchEvent(customEvent);
+    }
+  }]);
+
+  return Component;
+}();
+
+
+
+/***/ }),
+
 /***/ "./frontend/components/phone-catalogue/phone-catalogue.js":
 /*!****************************************************************!*\
   !*** ./frontend/components/phone-catalogue/phone-catalogue.js ***!
@@ -119,10 +186,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
 /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./frontend/components/phone-catalogue/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _template_hbs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./template.hbs */ "./frontend/components/phone-catalogue/template.hbs");
-/* harmony import */ var _template_hbs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_template_hbs__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style.css */ "./frontend/components/phone-catalogue/style.css");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _template_hbs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./template.hbs */ "./frontend/components/phone-catalogue/template.hbs");
+/* harmony import */ var _template_hbs__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_template_hbs__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../component */ "./frontend/components/component.js");
+
+
+
+
+
 
 
 
@@ -132,27 +213,46 @@ __webpack_require__.r(__webpack_exports__);
 
 var PhoneCatalogue =
 /*#__PURE__*/
-function () {
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(PhoneCatalogue, _Component);
+
   function PhoneCatalogue(options) {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, PhoneCatalogue);
 
-    this._el = options.el;
-    this._phones = options.phones;
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(PhoneCatalogue).call(this, options.el));
+    _this._phones = options.phones;
 
-    this._render();
+    _this._render();
+
+    _this.on('click', _this._onPhoneClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this)));
+
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(PhoneCatalogue, [{
     key: "_render",
     value: function _render() {
-      this._el.innerHTML = _template_hbs__WEBPACK_IMPORTED_MODULE_3___default()({
+      this._el.innerHTML = _template_hbs__WEBPACK_IMPORTED_MODULE_7___default()({
         phones: this._phones
       });
+    }
+  }, {
+    key: "_onPhoneClick",
+    value: function _onPhoneClick(event) {
+      var phoneElement = event.target.closest('[data-element="phone"]');
+
+      if (!phoneElement) {
+        return;
+      }
+
+      this.trigger('phoneSelected', phoneElement.dataset.phoneId);
     }
   }]);
 
   return PhoneCatalogue;
-}();
+}(_component__WEBPACK_IMPORTED_MODULE_8__["default"]);
 
 
 
@@ -234,21 +334,81 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PhonePage; });
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _phone_catalogue_phone_catalogue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../phone-catalogue/phone-catalogue */ "./frontend/components/phone-catalogue/phone-catalogue.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _phone_catalogue_phone_catalogue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../phone-catalogue/phone-catalogue */ "./frontend/components/phone-catalogue/phone-catalogue.js");
+/* harmony import */ var _phone_viewer_phone_viewer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../phone-viewer/phone-viewer */ "./frontend/components/phone-viewer/phone-viewer.js");
+/* harmony import */ var _shopping_cart_shopping_cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shopping-cart/shopping-cart */ "./frontend/components/shopping-cart/shopping-cart.js");
 
 
 
 
 
-var PhonePage = function PhonePage(options) {
-  _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, PhonePage);
 
-  this._el = options.el;
-  this._catalogue = new _phone_catalogue_phone_catalogue__WEBPACK_IMPORTED_MODULE_1__["default"]({
-    el: this._el.querySelector('[data-component="phone-catalogue"]'),
-    phones: phonesFromServer
-  });
-};
+
+
+var PhonePage =
+/*#__PURE__*/
+function () {
+  function PhonePage(options) {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, PhonePage);
+
+    this._el = options.el;
+    this._catalogue = new _phone_catalogue_phone_catalogue__WEBPACK_IMPORTED_MODULE_2__["default"]({
+      el: this._el.querySelector('[data-component="phone-catalogue"]'),
+      phones: phonesFromServer
+    });
+    this._viewer = new _phone_viewer_phone_viewer__WEBPACK_IMPORTED_MODULE_3__["default"]({
+      el: this._el.querySelector('[data-component="phone-viewer"]')
+    });
+    this._shoppingCart = new _shopping_cart_shopping_cart__WEBPACK_IMPORTED_MODULE_4__["default"]({
+      el: this._el.querySelector('[data-component="shopping-cart"]')
+    });
+
+    this._catalogue.on('phoneSelected', this._onPhoneSelected.bind(this));
+
+    this._viewer.on('back', this._onPhoneViewerBack.bind(this));
+
+    this._viewer.on('add', this._onPhoneViewerAdd.bind(this));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(PhonePage, [{
+    key: "_onPhoneViewerBack",
+    value: function _onPhoneViewerBack(event) {
+      this._viewer.hide();
+
+      this._catalogue.show();
+    }
+  }, {
+    key: "_onPhoneViewerAdd",
+    value: function _onPhoneViewerAdd(event) {
+      this._shoppingCart.addProduct(event.detail);
+    }
+  }, {
+    key: "_onPhoneSelected",
+    value: function _onPhoneSelected(event) {
+      var phoneId = event.detail;
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', "/data/phones/".concat(phoneId, ".json"), false);
+      xhr.send();
+
+      if (xhr.status != 200) {
+        alert(xhr.status + ': ' + xhr.statusText);
+        return;
+      }
+
+      var phone = JSON.parse(xhr.responseText);
+
+      this._viewer.setPhone(phone);
+
+      this._viewer.show();
+
+      this._catalogue.hide();
+    }
+  }]);
+
+  return PhonePage;
+}();
 
 
 var phonesFromServer = [{
@@ -385,6 +545,296 @@ var phonesFromServer = [{
   "name": "Motorola CHARM\u2122 with MOTOBLUR\u2122",
   "snippet": "Motorola CHARM fits easily in your pocket or palm.  Includes MOTOBLUR service."
 }];
+var phoneFromServer = {
+  "additionalFeatures": "Front Facing 1.3MP Camera",
+  "android": {
+    "os": "Android 2.2",
+    "ui": "Dell Stage"
+  },
+  "availability": ["T-Mobile"],
+  "battery": {
+    "standbyTime": "",
+    "talkTime": "",
+    "type": "Lithium Ion (Li-Ion) (2780 mAH)"
+  },
+  "camera": {
+    "features": ["Flash", "Video"],
+    "primary": "5.0 megapixels"
+  },
+  "connectivity": {
+    "bluetooth": "Bluetooth 2.1",
+    "cell": "T-mobile HSPA+ @ 2100/1900/AWS/850 MHz",
+    "gps": true,
+    "infrared": false,
+    "wifi": "802.11 b/g"
+  },
+  "description": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around. Android\u2122 2.2-based tablet with over-the-air upgrade capability for future OS releases.  A vibrant 7-inch, multitouch display with full Adobe\xAE Flash 10.1 pre-installed.  Includes a 1.3 MP front-facing camera for face-to-face chats on popular services such as Qik or Skype.  16 GB of internal storage, plus Wi-Fi, Bluetooth and built-in GPS keeps you in touch with the world around you.  Connect on your terms. Save with 2-year contract or flexibility with prepaid pay-as-you-go plans",
+  "display": {
+    "screenResolution": "WVGA (800 x 480)",
+    "screenSize": "7.0 inches",
+    "touchScreen": true
+  },
+  "hardware": {
+    "accelerometer": true,
+    "audioJack": "3.5mm",
+    "cpu": "nVidia Tegra T20",
+    "fmRadio": false,
+    "physicalKeyboard": false,
+    "usb": "USB 2.0"
+  },
+  "id": "dell-streak-7",
+  "images": ["img/phones/dell-streak-7.0.jpg", "img/phones/dell-streak-7.1.jpg", "img/phones/dell-streak-7.2.jpg", "img/phones/dell-streak-7.3.jpg", "img/phones/dell-streak-7.4.jpg"],
+  "name": "Dell Streak 7",
+  "sizeAndWeight": {
+    "dimensions": ["199.9 mm (w)", "119.8 mm (h)", "12.4 mm (d)"],
+    "weight": "450.0 grams"
+  },
+  "storage": {
+    "flash": "16000MB",
+    "ram": "512MB"
+  }
+};
+
+/***/ }),
+
+/***/ "./frontend/components/phone-viewer/phone-viewer.js":
+/*!**********************************************************!*\
+  !*** ./frontend/components/phone-viewer/phone-viewer.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PhoneViewer; });
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _template_hbs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./template.hbs */ "./frontend/components/phone-viewer/template.hbs");
+/* harmony import */ var _template_hbs__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_template_hbs__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../component */ "./frontend/components/component.js");
+
+
+
+
+
+
+
+
+
+
+
+var PhoneViewer =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(PhoneViewer, _Component);
+
+  function PhoneViewer(options) {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, PhoneViewer);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(PhoneViewer).call(this, options.el));
+
+    _this.on('click', _this._onBackButtonClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this)));
+
+    _this.on('click', _this._onAddButtonClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this)));
+
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(PhoneViewer, [{
+    key: "setPhone",
+    value: function setPhone(phone) {
+      this._phone = phone;
+
+      this._render();
+    }
+  }, {
+    key: "_render",
+    value: function _render() {
+      this._el.innerHTML = _template_hbs__WEBPACK_IMPORTED_MODULE_6___default()({
+        phone: this._phone
+      });
+    }
+  }, {
+    key: "_onBackButtonClick",
+    value: function _onBackButtonClick(event) {
+      if (!event.target.closest('[data-element="back-button"]')) {
+        return;
+      }
+
+      this.trigger('back');
+    }
+  }, {
+    key: "_onAddButtonClick",
+    value: function _onAddButtonClick(event) {
+      if (!event.target.closest('[data-element="add-button"]')) {
+        return;
+      }
+
+      this.trigger('add', this._phone.id);
+    }
+  }]);
+
+  return PhoneViewer;
+}(_component__WEBPACK_IMPORTED_MODULE_7__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./frontend/components/phone-viewer/template.hbs":
+/*!*******************************************************!*\
+  !*** ./frontend/components/phone-viewer/template.hbs ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Handlebars = __webpack_require__(/*! ../../../node_modules/handlebars/runtime.js */ "./node_modules/handlebars/runtime.js");
+function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data,blockParams) {
+    return "\r\n    <li>\r\n      <img src=\""
+    + container.escapeExpression(container.lambda(blockParams[0][0], depth0))
+    + "\">\r\n    </li>\r\n\r\n";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data,blockParams) {
+    var stack1, alias1=container.propertyIsEnumerable, alias2=container.lambda;
+
+  return "<img class=\"phone\" src=\""
+    + container.escapeExpression(alias2(((stack1 = ((stack1 = (depth0 != null ? depth0.phone : depth0)) != null ? stack1.images : stack1)) != null ? stack1["0"] : stack1), depth0))
+    + "\">\r\n\r\n<h1>"
+    + ((stack1 = alias2(((stack1 = (depth0 != null ? depth0.phone : depth0)) != null ? stack1.name : stack1), depth0)) != null ? stack1 : "")
+    + "</h1>\r\n\r\n<p>"
+    + ((stack1 = alias2(((stack1 = (depth0 != null ? depth0.phone : depth0)) != null ? stack1.description : stack1), depth0)) != null ? stack1 : "")
+    + "</p>\r\n\r\n<ul class=\"phone-thumbs\">\r\n\r\n"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.phone : depth0)) != null ? stack1.images : stack1),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams})) != null ? stack1 : "")
+    + "\r\n</ul>\r\n\r\n<button data-element=\"back-button\">Go back</button>\r\n<button data-element=\"add-button\">Add to basket</button>\r\n";
+},"useData":true,"useBlockParams":true});
+
+/***/ }),
+
+/***/ "./frontend/components/shopping-cart/shopping-cart.js":
+/*!************************************************************!*\
+  !*** ./frontend/components/shopping-cart/shopping-cart.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ShoppingCart; });
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _template_hbs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./template.hbs */ "./frontend/components/shopping-cart/template.hbs");
+/* harmony import */ var _template_hbs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_template_hbs__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../component */ "./frontend/components/component.js");
+
+
+
+
+
+
+
+
+
+
+var ShoppingCart =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(ShoppingCart, _Component);
+
+  function ShoppingCart(options) {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, ShoppingCart);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(ShoppingCart).call(this, options.el));
+    _this._products = [];
+
+    _this._render();
+
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(ShoppingCart, [{
+    key: "addProduct",
+    value: function addProduct(product) {
+      this._products.push(product);
+
+      this._render();
+    }
+  }, {
+    key: "_render",
+    value: function _render() {
+      this._el.innerHTML = _template_hbs__WEBPACK_IMPORTED_MODULE_5___default()({
+        products: this._products
+      });
+    }
+  }]);
+
+  return ShoppingCart;
+}(_component__WEBPACK_IMPORTED_MODULE_6__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./frontend/components/shopping-cart/template.hbs":
+/*!********************************************************!*\
+  !*** ./frontend/components/shopping-cart/template.hbs ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Handlebars = __webpack_require__(/*! ../../../node_modules/handlebars/runtime.js */ "./node_modules/handlebars/runtime.js");
+function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data,blockParams) {
+    return "\r\n    	<li>"
+    + container.escapeExpression(container.lambda(blockParams[0][0], depth0))
+    + "</li>\r\n\r\n";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data,blockParams) {
+    var stack1, alias1=container.propertyIsEnumerable;
+
+  return "<h4>Shopping cart</h4>\r\n<ul>\r\n"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.products : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams})) != null ? stack1 : "")
+    + "</ul> ";
+},"useData":true,"useBlockParams":true});
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+module.exports = _assertThisInitialized;
 
 /***/ }),
 
@@ -432,6 +882,122 @@ module.exports = _createClass;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/inherits.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf */ "./node_modules/@babel/runtime/helpers/setPrototypeOf.js");
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
+}
+
+module.exports = _inherits;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! ../helpers/typeof */ "./node_modules/@babel/runtime/helpers/typeof.js");
+
+var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/setPrototypeOf.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+module.exports = _setPrototypeOf;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/typeof.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return _typeof2(obj);
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./frontend/components/phone-catalogue/style.css":
 /*!*********************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./frontend/components/phone-catalogue/style.css ***!
@@ -441,7 +1007,7 @@ module.exports = _createClass;
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "body {\r\n\tbackground-color: #DCDCDC;\r\n}", ""]);
+exports.push([module.i, "body {\r\n\tbackground-color: #F5F2F0;\r\n}", ""]);
 
 
 /***/ }),
