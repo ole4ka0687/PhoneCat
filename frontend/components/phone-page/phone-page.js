@@ -39,21 +39,28 @@ export default class PhonePage {
         let phoneId = event.detail;
 
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', `/data/phones/${phoneId}.json`, false);
+        xhr.open('GET', `/data/phones/${phoneId}.json`, true);
         xhr.send();
 
-        if (xhr.status != 200) {
-          alert( xhr.status + ': ' + xhr.statusText );
+        xhr.onerror = () => {
+            console.error('Server error');
+        };
+
+        xhr.onload = () => {
+            if (xhr.status != 200) {
+          console.error( xhr.status + ': ' + xhr.statusText );
 
           return;
         }
 
-        let phone = JSON.parse(xhr.responseText);
+            let phone = JSON.parse(xhr.responseText);
 
-        this._viewer.setPhone(phone);
+            this._viewer.setPhone(phone);
 
-        this._viewer.show();
-        this._catalogue.hide();
+            this._viewer.show();
+            this._catalogue.hide();
+        }
+
     }
 
     

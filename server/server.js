@@ -5,7 +5,15 @@ var file = new static.Server('.', {
 });
 
 function accept(request, response) {
-  file.serve(request, response);
+  if (!request.url.startsWith('/data/')) {
+    file.serve(request, response);
+
+    return;
+  }
+
+  setTimeout(() => {
+    file.serve(request, response);
+  }, 5000);
 }
 
 http.createServer(accept).listen(3000);

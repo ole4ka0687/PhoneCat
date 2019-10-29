@@ -387,23 +387,31 @@ function () {
   }, {
     key: "_onPhoneSelected",
     value: function _onPhoneSelected(event) {
+      var _this = this;
+
       var phoneId = event.detail;
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', "/data/phones/".concat(phoneId, ".json"), false);
+      xhr.open('GET', "/data/phones/".concat(phoneId, ".json"), true);
       xhr.send();
 
-      if (xhr.status != 200) {
-        alert(xhr.status + ': ' + xhr.statusText);
-        return;
-      }
+      xhr.onerror = function () {
+        console.error('Server error');
+      };
 
-      var phone = JSON.parse(xhr.responseText);
+      xhr.onload = function () {
+        if (xhr.status != 200) {
+          console.error(xhr.status + ': ' + xhr.statusText);
+          return;
+        }
 
-      this._viewer.setPhone(phone);
+        var phone = JSON.parse(xhr.responseText);
 
-      this._viewer.show();
+        _this._viewer.setPhone(phone);
 
-      this._catalogue.hide();
+        _this._viewer.show();
+
+        _this._catalogue.hide();
+      };
     }
   }]);
 
