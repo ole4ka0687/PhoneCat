@@ -222,7 +222,7 @@ function (_Component) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, PhoneCatalogue);
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(PhoneCatalogue).call(this, options.el));
-    _this._phones = options.phones;
+    _this._phones = [];
 
     _this._render();
 
@@ -232,6 +232,13 @@ function (_Component) {
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(PhoneCatalogue, [{
+    key: "setPhones",
+    value: function setPhones(phones) {
+      this._phones = phones;
+
+      this._render();
+    }
+  }, {
     key: "_render",
     value: function _render() {
       this._el.innerHTML = _template_hbs__WEBPACK_IMPORTED_MODULE_7___default()({
@@ -339,11 +346,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _phone_catalogue_phone_catalogue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../phone-catalogue/phone-catalogue */ "./frontend/components/phone-catalogue/phone-catalogue.js");
 /* harmony import */ var _phone_viewer_phone_viewer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../phone-viewer/phone-viewer */ "./frontend/components/phone-viewer/phone-viewer.js");
 /* harmony import */ var _shopping_cart_shopping_cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shopping-cart/shopping-cart */ "./frontend/components/shopping-cart/shopping-cart.js");
+/* harmony import */ var _services_phone_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/phone.service */ "./frontend/services/phone.service.js");
 
 
 
 
 
+
+ //import HTTPService from '../../services/http.service';
 
 
 
@@ -355,8 +365,7 @@ function () {
 
     this._el = options.el;
     this._catalogue = new _phone_catalogue_phone_catalogue__WEBPACK_IMPORTED_MODULE_2__["default"]({
-      el: this._el.querySelector('[data-component="phone-catalogue"]'),
-      phones: phonesFromServer
+      el: this._el.querySelector('[data-component="phone-catalogue"]')
     });
     this._viewer = new _phone_viewer_phone_viewer__WEBPACK_IMPORTED_MODULE_3__["default"]({
       el: this._el.querySelector('[data-component="phone-viewer"]')
@@ -370,6 +379,8 @@ function () {
     this._viewer.on('back', this._onPhoneViewerBack.bind(this));
 
     this._viewer.on('add', this._onPhoneViewerAdd.bind(this));
+
+    _services_phone_service__WEBPACK_IMPORTED_MODULE_5__["default"].getAll(this._showPhones.bind(this));
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(PhonePage, [{
@@ -387,31 +398,22 @@ function () {
   }, {
     key: "_onPhoneSelected",
     value: function _onPhoneSelected(event) {
-      var _this = this;
-
       var phoneId = event.detail;
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', "/data/phones/".concat(phoneId, ".json"), true);
-      xhr.send();
+      _services_phone_service__WEBPACK_IMPORTED_MODULE_5__["default"].get(phoneId, this._showPhoneDetails.bind(this));
+    }
+  }, {
+    key: "_showPhones",
+    value: function _showPhones(phones) {
+      this._catalogue.setPhones(phones);
+    }
+  }, {
+    key: "_showPhoneDetails",
+    value: function _showPhoneDetails(phoneDetails) {
+      this._viewer.setPhone(phoneDetails);
 
-      xhr.onerror = function () {
-        console.error('Server error');
-      };
+      this._viewer.show();
 
-      xhr.onload = function () {
-        if (xhr.status != 200) {
-          console.error(xhr.status + ': ' + xhr.statusText);
-          return;
-        }
-
-        var phone = JSON.parse(xhr.responseText);
-
-        _this._viewer.setPhone(phone);
-
-        _this._viewer.show();
-
-        _this._catalogue.hide();
-      };
+      this._catalogue.hide();
     }
   }]);
 
@@ -824,6 +826,109 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
     + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.products : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams})) != null ? stack1 : "")
     + "</ul> ";
 },"useData":true,"useBlockParams":true});
+
+/***/ }),
+
+/***/ "./frontend/services/http.service.js":
+/*!*******************************************!*\
+  !*** ./frontend/services/http.service.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return HTTPService; });
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var API_URL = '/data/';
+
+var HTTPService =
+/*#__PURE__*/
+function () {
+  function HTTPService() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, HTTPService);
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(HTTPService, null, [{
+    key: "sendRequest",
+    value: function sendRequest(url, successCallback) {
+      var method = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "GET";
+      var xhr = new XMLHttpRequest();
+      xhr.open(method, API_URL + url, true);
+      xhr.send();
+
+      xhr.onerror = function () {
+        console.error('Server error');
+      };
+
+      xhr.onload = function () {
+        if (xhr.status != 200) {
+          console.error(xhr.status + ': ' + xhr.statusText);
+          return;
+        }
+
+        var responseData = JSON.parse(xhr.responseText);
+        successCallback(responseData);
+      };
+    }
+  }]);
+
+  return HTTPService;
+}();
+
+
+
+/***/ }),
+
+/***/ "./frontend/services/phone.service.js":
+/*!********************************************!*\
+  !*** ./frontend/services/phone.service.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PhoneService; });
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./http.service */ "./frontend/services/http.service.js");
+
+
+
+
+var PhoneService =
+/*#__PURE__*/
+function () {
+  function PhoneService() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, PhoneService);
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(PhoneService, null, [{
+    key: "get",
+    value: function get(phoneId, callback) {
+      var url = "phones/".concat(phoneId, ".json");
+      _http_service__WEBPACK_IMPORTED_MODULE_2__["default"].sendRequest(url, callback);
+    }
+  }, {
+    key: "getAll",
+    value: function getAll(callback) {
+      var url = "phones/phones.json";
+      _http_service__WEBPACK_IMPORTED_MODULE_2__["default"].sendRequest(url, callback);
+    }
+  }]);
+
+  return PhoneService;
+}();
+
+
 
 /***/ }),
 

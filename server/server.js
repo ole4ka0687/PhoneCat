@@ -11,9 +11,9 @@ function accept(request, response) {
     return;
   }
 
-  setTimeout(() => {
+  //setTimeout(() => {
     file.serve(request, response);
-  }, 5000);
+  //}, 5000);
 }
 
 http.createServer(accept).listen(3000);

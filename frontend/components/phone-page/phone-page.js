@@ -3,6 +3,8 @@
 import PhoneCatalogue from '../phone-catalogue/phone-catalogue';
 import PhoneViewer from '../phone-viewer/phone-viewer';
 import ShoppingCart from '../shopping-cart/shopping-cart';
+//import HTTPService from '../../services/http.service';
+import PhoneService from '../../services/phone.service';
 
 export default class PhonePage {
 	constructor(options) {
@@ -10,7 +12,6 @@ export default class PhonePage {
 
 		this._catalogue = new PhoneCatalogue({
 			el: this._el.querySelector('[data-component="phone-catalogue"]'),
-			phones: phonesFromServer,
 		});
 
         this._viewer = new PhoneViewer({
@@ -24,6 +25,8 @@ export default class PhonePage {
         this._catalogue.on('phoneSelected', this._onPhoneSelected.bind(this));
         this._viewer.on('back', this._onPhoneViewerBack.bind(this));
         this._viewer.on('add', this._onPhoneViewerAdd.bind(this));
+
+        PhoneService.getAll(this._showPhones.bind(this));
 	}
 
     _onPhoneViewerBack(event) {
@@ -38,31 +41,18 @@ export default class PhonePage {
     _onPhoneSelected(event) {
         let phoneId = event.detail;
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', `/data/phones/${phoneId}.json`, true);
-        xhr.send();
-
-        xhr.onerror = () => {
-            console.error('Server error');
-        };
-
-        xhr.onload = () => {
-            if (xhr.status != 200) {
-          console.error( xhr.status + ': ' + xhr.statusText );
-
-          return;
-        }
-
-            let phone = JSON.parse(xhr.responseText);
-
-            this._viewer.setPhone(phone);
-
-            this._viewer.show();
-            this._catalogue.hide();
-        }
-
+        PhoneService.get(phoneId, this._showPhoneDetails.bind(this))
     }
 
+    _showPhones(phones) {
+        this._catalogue.setPhones(phones);
+    }
+
+    _showPhoneDetails(phoneDetails) {
+        this._viewer.setPhone(phoneDetails);
+        this._viewer.show();
+        this._catalogue.hide();
+    }
     
 }
 
